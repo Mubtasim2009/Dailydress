@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Dress Bangladesh Limited - Coming Soon</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover;
+      color: #fff;
+      text-align: center;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+      padding: 30px;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 15px;
+      background: rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+      color: #ffdd59;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 25px;
+    }
+
+    .countdown {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+    }
+
+    .countdown div {
+      text-align: center;
+    }
+
+    footer {
+      margin-top: 20px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    @media (max-width: 400px) {
+      .countdown {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+  <div class="container">
+    <h1>Daily Dress Bangladesh Limited</h1>
+    <p>Our website is coming soon! Stay tuned for the latest fashion collections.</p>
+
+    <div class="countdown" id="countdown">
+      <div><span id="days">0</span> Days</div>
+      <div><span id="hours">0</span> Hours</div>
+      <div><span id="minutes">0</span> Minutes</div>
+      <div><span id="seconds">0</span> Seconds</div>
+    </div>
+
+    <footer>&copy; 2025 Daily Dress Bangladesh Limited. All rights reserved.</footer>
+  </div>
+
+  <script>
+    const launchDate = new Date("October 1, 2025 12:00:00").getTime();
+
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = launchDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      if (distance < 0) {
+        clearInterval(countdown);
+        document.getElementById("countdown").innerHTML = "We're Live!";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
